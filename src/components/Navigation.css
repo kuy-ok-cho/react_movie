@@ -1,0 +1,17 @@
+.nav {
+  z-index: 1;
+  position: fixed;
+  top: 50px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #ddd;
+  padding: 10px 20px;
+  box-shadow: 0 13px 27px -5px rgba(50, 93, 93, 0);
+}
+
+.nav a {
+  text-decoration: none;
+  color: #0008fc;
+  text-transform: uppercase;
+}

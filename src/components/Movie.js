@@ -1,34 +1,41 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Movie.css";
+import { Link } from "react-router-dom";
 
 function Movie({ title, year, summary, poster, genres }) {
   return (
     <div className='movie'>
-      <div className='movie_inside'>
-        <img
-          src={poster}
-          alt={title}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src =
-              "https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png";
-          }}
-        />
-        <div className='movie_data'>
-          <h3 className='movie_title'>{title.slice(0, 15)}...</h3>
-          <h5 className='movie_year'>{year}</h5>
-          <ul>
-            {/* {genres.map((genre) => (
+      <Link
+        to={{
+          pathname: "/movie_detail",
+          state: { year, title, summary, poster, genres },
+        }}>
+        <div className='movie_inside'>
+          <img
+            src={poster}
+            alt={title}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png";
+            }}
+          />
+          <div className='movie_data'>
+            <h3 className='movie_title'>{title.slice(0, 15)}...</h3>
+            <h5 className='movie_year'>{year}</h5>
+            <ul>
+              {/* {genres.map((genre) => (
           <li>{genre}</li>
         ))} */}
-            {genres.map((genre, idx) => {
-              return <li key={idx}>[{genre}]</li>;
-            })}
-          </ul>
-          <p className='movie_summary'>{summary.slice(0, 100)}...</p>
+              {genres.map((genre, idx) => {
+                return <li key={idx}>[{genre}]</li>;
+              })}
+            </ul>
+            <p className='movie_summary'>{summary.slice(0, 100)}...</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
